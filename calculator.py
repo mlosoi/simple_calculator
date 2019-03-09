@@ -2,7 +2,6 @@ import re
 import sys
 
 from enum import *
-from functools import *
 
 from token import *
 
@@ -10,8 +9,7 @@ print_debug_output = True
 
 # input_expression = '2 * (23/(33))- 23 * (23)'
 
-def tokenized_expression_to_str(tokenized_expression):
-    return reduce(lambda token_1_datum, token_2_datum: '{0} {1}'.format(token_1_datum, token_2_datum), map(lambda token: token.datum, tokenized_expression))
+
 
 # Parameters:
 #   expression:
