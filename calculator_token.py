@@ -95,4 +95,7 @@ def tokenize_expression(expression):
     return tokens
 
 def tokenized_expression_to_str(tokenized_expression):
+    if len(tokenized_expression) == 0:
+        return ''
+
     return reduce(lambda token_1_datum, token_2_datum: '{0} {1}'.format(token_1_datum, token_2_datum), map(lambda token: token.datum, tokenized_expression))
