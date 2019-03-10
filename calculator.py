@@ -7,7 +7,7 @@ import sys
 
 from enum import *
 
-from token import *
+from calculator_token import *
 
 print_debug_output = True
 
