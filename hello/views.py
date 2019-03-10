@@ -9,7 +9,7 @@ sys.path.append('..')
 from calculator import calculate_value
 
 def index(request):
-    infix_expression = b64decode(request.GET['query'])
+    infix_expression = b64decode(request.GET['query']).decode('UTF-8')
 
     value = calculate_value(infix_expression)
 
