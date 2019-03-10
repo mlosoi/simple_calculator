@@ -28,7 +28,9 @@ class TestCalculator(TestCase):
         '1+1+1+3',
         '(1+1+1-(3+4)*5)/5',
         '1+1+1-(3+4)*5',
-        '1 / 1 / 1 + 5'
+        '1 / 1 / 1 + 5',
+        '1+2+3+4-4-3-2-1',
+        '1*2*3*4/4/3/2/1'
     ]
 
     def test_calculator(self):
@@ -42,9 +44,9 @@ class TestCalculator(TestCase):
             reference_value = float(eval(test_expression))
 
             if math.isclose(calculated_value, reference_value):
-                print('PASS: The calculated value {0} and the reference value {0} are close enough'.format(calculated_value, reference_value))
+                print('PASS: The calculated value {0} and the reference value {1} are close enough'.format(calculated_value, reference_value))
             else:
-                print('FAIL: The calculated value {0} and the reference value {0} are not close enough'.format(calculated_value, reference_value))
+                print('FAIL: The calculated value {0} and the reference value {1} are not close enough'.format(calculated_value, reference_value))
 
                 all_values_correct = False
 
