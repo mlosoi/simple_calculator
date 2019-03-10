@@ -80,6 +80,9 @@ def tokenize_expression(expression):
             elif character == Token.Identifier.CLOSING_PARENTHESIS:
                 tokens.append(Token(Token.Type.CLOSING_PARENTHESIS, character))
 
+    if reading_number:
+        tokens.append(Token(Token.Type.NUMBER, float(current_number)))
+    
     return tokens
 
 # http://csis.pace.edu/~wolf/CS122/infix-postfix.htm
