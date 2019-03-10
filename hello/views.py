@@ -1,7 +1,16 @@
-from django.shortcuts import render
+import sys
+
+from base64 import b64decode
+
 from django.http import HttpResponse
 
-# Create your views here.
+sys.path.append('..')
+
+from calculator import calculate_value
+
 def index(request):
-    return HttpResponse('Hello from Python! {0}'.format(request.GET['query']))
-    # return render(request, "index.html")
+    infix_expression = b64decode(request.GET['query'])
+
+    value = calculate_value(infix_expression)
+
+    return HttpResponse('{0}'.format(value))
