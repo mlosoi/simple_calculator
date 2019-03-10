@@ -1,3 +1,7 @@
+# Sources of ideas:
+#  https://en.wikipedia.org/wiki/Reverse_Polish_notation
+#  http://csis.pace.edu/~wolf/CS122/infix-postfix.htm
+
 import re
 import sys
 
@@ -100,7 +104,6 @@ def tokenize_expression(expression):
 
     return tokens
 
-# http://csis.pace.edu/~wolf/CS122/infix-postfix.htm
 def infix_to_postfix(infix_expression):
     postfix_expression = []
     operator_stack = []
@@ -165,6 +168,7 @@ def evaluate_postfix(postfix_expression):
 
     return number_stack.pop().datum
 
-input_expression = sys.argv[1]
+if __name__ == '__main__':
+    input_expression = sys.argv[1]
 
-print(calculate_value(input_expression))
+    print(calculate_value(input_expression))
