@@ -1,3 +1,4 @@
+import json
 import sys
 
 from base64 import b64decode
@@ -13,4 +14,4 @@ def calculus(request):
 
     value = calculate_value(infix_expression)
 
-    return HttpResponse('{0}'.format(value))
+    return HttpResponse(json.dumps({'error': False, 'value': value}))
