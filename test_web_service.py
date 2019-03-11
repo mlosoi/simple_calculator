@@ -24,14 +24,17 @@ class TestWebService(TestCase):
         for test_expression in test_calculator.test_expressions:
             print('Testing the expression: {0}...'.format(test_expression))
 
+            # Transform the expression into a base64-encoded string
             base64_encoded_test_expression = base64.b64encode(bytes(test_expression, 'utf-8')).decode('utf-8')
 
             print('Base64-encoded expression: {0}'.format(base64_encoded_test_expression))
 
-            api_call = '{0}?{1}={2}'.format(self.web_service_endpoint, self.query_url_parameter_identifier, base64_encoded_test_expression)
+            # Construct the API call URL
+            api_call_url = '{0}?{1}={2}'.format(self.web_service_endpoint, self.query_url_parameter_identifier, base64_encoded_test_expression)
 
-            print('Calling the API in the URL: {0}'.format(api_call))
+            print('Calling the API in the URL: {0}'.format(api_call_url))
 
+            # Transform the JSON response string into a Python dictionary
             response = json.loads(urlopen(api_call).read().decode('utf-8'))
 
             print('Response: {0}'.format(response))
