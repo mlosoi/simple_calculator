@@ -14,4 +14,4 @@ def calculus(request):
 
     value = calculate_value(infix_expression)
 
-    return HttpResponse(json.dumps({'error': False, 'value': value}))
+    return HttpResponse(json.dumps({'error': False, 'value': value}), content_type = 'application/json')
