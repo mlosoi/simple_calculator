@@ -19,6 +19,34 @@ class Token:
     type = None
     datum = None
 
+    @classmethod
+    def number(cls, number):
+        return cls(cls.Type.NUMBER, number)
+
+    @classmethod
+    def addition_operator(cls):
+        return cls(cls.Type.OPERATOR, '+')
+
+    @classmethod
+    def subtraction_operator(cls):
+        return cls(cls.Type.OPERATOR, '-')
+
+    @classmethod
+    def multiplication_operator(cls):
+        return cls(cls.Type.OPERATOR, '*')
+
+    @classmethod
+    def division_operator(cls):
+        return cls(cls.Type.OPERATOR, '/')
+
+    @classmethod
+    def opening_parenthesis(cls):
+        return cls(cls.Type.OPENING_PARENTHESIS, '(')
+
+    @classmethod
+    def closing_parenthesis(cls):
+        return cls(cls.Type.CLOSING_PARENTHESIS, ')')
+
     def __init__(self, type, datum):
         self.type = type
         self.datum = datum
@@ -26,29 +54,34 @@ class Token:
     def __repr__(self):
         return "(" + str(self.type) + ", " + str(self.datum) + ")"
 
+    def __eq__(self, token):
+        return self.type == token.type and self.datum == token.datum
+
+    # Note that there's no need to override the inequality operator (!= / __ne__) because in Python 3 the inequality operator returns the inverse of the equality operator (== / __eq__)
+
     def is_number(self):
-        return self.type == Token.Type.NUMBER
+        return self.type == self.Type.NUMBER
 
     def is_operator(self):
-        return self.type == Token.Type.OPERATOR
+        return self.type == self.Type.OPERATOR
 
     def is_addition_operator(self):
-        return self.type == Token.Type.OPERATOR and self.datum == Token.Identifier.OPERATOR_ADDITION
+        return self.type == self.Type.OPERATOR and self.datum == Token.Identifier.OPERATOR_ADDITION
 
     def is_subtraction_operator(self):
-        return self.type == Token.Type.OPERATOR and self.datum == Token.Identifier.OPERATOR_SUBTRACTION
+        return self.type == self.Type.OPERATOR and self.datum == self.Identifier.OPERATOR_SUBTRACTION
 
     def is_multiplication_operator(self):
-        return self.type == Token.Type.OPERATOR and self.datum == Token.Identifier.OPERATOR_MULTIPLICATION
+        return self.type == self.Type.OPERATOR and self.datum == self.Identifier.OPERATOR_MULTIPLICATION
 
     def is_division_operator(self):
-        return self.type == Token.Type.OPERATOR and self.datum == Token.Identifier.OPERATOR_DIVISION
+        return self.type == self.Type.OPERATOR and self.datum == self.Identifier.OPERATOR_DIVISION
 
     def is_opening_parenthesis(self):
-        return self.type == Token.Type.OPENING_PARENTHESIS
+        return self.type == self.Type.OPENING_PARENTHESIS
 
     def is_closing_parenthesis(self):
-        return self.type == Token.Type.CLOSING_PARENTHESIS
+        return self.type == self.Type.CLOSING_PARENTHESIS
 
 def tokenize_expression(expression):
     tokens = []

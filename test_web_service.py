@@ -19,9 +19,13 @@ class TestWebService(TestCase):
     response_value_identifier = 'value'
 
     def test_web_service(self):
+        print()
+        print('*** Web service test ***')
+        print()
+
         all_values_correct = True
 
-        for test_expression in test_calculator.test_expressions:
+        for test_expression in test_calculator.all_test_expressions:
             print('Testing the expression: {0}...'.format(test_expression))
 
             # Transform the expression into a base64-encoded string
@@ -35,7 +39,7 @@ class TestWebService(TestCase):
             print('Calling the API in the URL: {0}'.format(api_call_url))
 
             # Transform the JSON response string into a Python dictionary
-            response = json.loads(urlopen(api_call).read().decode('utf-8'))
+            response = json.loads(urlopen(api_call_url).read().decode('utf-8'))
 
             print('Response: {0}'.format(response))
 
@@ -58,6 +62,8 @@ class TestWebService(TestCase):
                 all_values_correct = False
 
         self.assertTrue(all_values_correct)
+
+        print()
 
 if __name__ == '__main__':
     main()
