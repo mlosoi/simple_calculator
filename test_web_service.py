@@ -48,7 +48,7 @@ class TestWebService(TestCase):
 
                 reference_value = float(eval(test_expression))
 
-                # Avoid naive floating point comparison by allowing the calculated and the reference value to be close enough. Otherwise, the accumulation of  floating point errors may lead to incorrect deduction
+                # Avoid naive floating point comparison by allowing the calculated and the reference value to be 'close enough'. Otherwise, the accumulation of  floating point errors may lead to incorrect deduction
                 if math.isclose(calculated_value, reference_value):
                     print('PASS: The calculated value {0} and the reference value {1} are close enough'.format(calculated_value, reference_value))
                 else:

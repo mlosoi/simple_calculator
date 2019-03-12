@@ -10,6 +10,8 @@ sys.path.append('..')
 from calculator import calculate_value
 
 def calculus(request):
+    # TODO: Catch errors!
+
     infix_expression = b64decode(request.GET['query']).decode('UTF-8')
 
     value = calculate_value(infix_expression)
