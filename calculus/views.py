@@ -39,7 +39,7 @@ def calculus(request):
         infix_expression = b64decode(query_url_parameter_value).decode('UTF-8')
 
     except:
-        return HttpResponse(json.dumps({response_error_identifier: True, response_message_identifier: 'Failed to decode input expression from the \'{0}\' URL parameter. Check the parameter'.format(query_url_parameter_identifier)}), content_type = 'application/json')
+        return HttpResponse(json.dumps({response_error_identifier: True, response_message_identifier: 'Failed to decode input expression from the \'{0}\' URL parameter. Check the parameter value {1}'.format(query_url_parameter_identifier, query_url_parameter_value)}), content_type = 'application/json')
 
     value = None
 

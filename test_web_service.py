@@ -18,7 +18,39 @@ class TestWebService(TestCase):
 
     response_value_identifier = 'value'
 
-    def test_web_service(self):
+    def test_missing_query_parameter(self):
+        print()
+        print()
+        print('*** Missing query parameter test ***')
+
+        print('Calling the endpoint {0} without a URL parameter'.format(self.web_service_endpoint))
+
+        response = json.loads(urlopen(self.web_service_endpoint).read().decode('utf-8'))
+
+        print('Response: {0}'.format(response))
+
+        self.assertTrue(response['error'])
+
+    def test_invalid_base64_encoding(self):
+        print()
+        print()
+        print('*** Invalid base64 encoding test ***')
+
+        invalid_base64_encoding_string = '12345'
+
+        # Construct the API call URL
+        api_call_url = '{0}?{1}={2}'.format(self.web_service_endpoint, self.query_url_parameter_identifier, invalid_base64_encoding_string)
+
+        print('Calling the API in the URL: {0}'.format(api_call_url))
+
+        # Transform the JSON response string into a Python dictionary
+        response = json.loads(urlopen(api_call_url).read().decode('utf-8'))
+
+        print('Response: {0}'.format(response))
+
+        self.assertTrue(response['error'])
+
+    def test_correct_expressions(self):
         print()
         print('*** Web service test ***')
         print()
