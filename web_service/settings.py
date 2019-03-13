@@ -48,7 +48,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "simple_calculator.urls"
+ROOT_URLCONF = "web_service.urls"
 
 TEMPLATES = [
     {
@@ -66,7 +66,7 @@ TEMPLATES = [
     }
 ]
 
-WSGI_APPLICATION = "simple_calculator.wsgi.application"
+WSGI_APPLICATION = "web_service.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases

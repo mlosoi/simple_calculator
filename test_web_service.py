@@ -31,6 +31,8 @@ class TestWebService(TestCase):
 
         self.assertTrue(response[self.response_error_identifier])
 
+        print()
+
     def test_invalid_base64_encoding(self):
         print()
         print()
@@ -50,12 +52,14 @@ class TestWebService(TestCase):
 
         self.assertTrue(response[self.response_error_identifier])
 
+        print()
+
     def test_invalid_expression(self):
         print()
         print()
         print('*** Invalid expression test ***')
 
-        invalid_infi_expression = '1+2+-*/'
+        invalid_infix_expression = '1+2+-*/'
 
         # Construct the API call URL
         api_call_url = '{0}?{1}={2}'.format(self.web_service_endpoint, self.query_url_parameter_identifier, base64.b64encode(bytes(invalid_infix_expression, 'utf-8')).decode('utf-8'))
@@ -68,6 +72,8 @@ class TestWebService(TestCase):
         print('Response: {0}'.format(response))
 
         self.assertTrue(response[self.response_error_identifier])
+
+        print()
 
     def test_correct_expressions(self):
         print()

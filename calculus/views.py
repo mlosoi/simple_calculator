@@ -43,6 +43,8 @@ def calculus(request):
 
     value = None
 
+    # Consider whether it's possible to give so lengthy expression as input that the HTTP server timeouts the request. Supposedly, there's a max length for a URL as it's discussed here: https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers 
+
     try:
         # Calculate the given expression
         value = calculate_value(infix_expression)

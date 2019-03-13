@@ -1,1 +1,1 @@
-web: gunicorn simple_calculator.wsgi --log-file -
+web: gunicorn web_service.wsgi --log-file -
