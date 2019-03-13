@@ -29,7 +29,7 @@ class TestWebService(TestCase):
 
         print('Response: {0}'.format(response))
 
-        self.assertTrue(response['error'])
+        self.assertTrue(response[self.response_error_identifier])
 
     def test_invalid_base64_encoding(self):
         print()
@@ -48,11 +48,30 @@ class TestWebService(TestCase):
 
         print('Response: {0}'.format(response))
 
-        self.assertTrue(response['error'])
+        self.assertTrue(response[self.response_error_identifier])
+
+    def test_invalid_expression(self):
+        print()
+        print()
+        print('*** Invalid expression test ***')
+
+        invalid_infi_expression = '1+2+-*/'
+
+        # Construct the API call URL
+        api_call_url = '{0}?{1}={2}'.format(self.web_service_endpoint, self.query_url_parameter_identifier, base64.b64encode(bytes(invalid_infix_expression, 'utf-8')).decode('utf-8'))
+
+        print('Calling the API in the URL: {0}'.format(api_call_url))
+
+        # Transform the JSON response string into a Python dictionary
+        response = json.loads(urlopen(api_call_url).read().decode('utf-8'))
+
+        print('Response: {0}'.format(response))
+
+        self.assertTrue(response[self.response_error_identifier])
 
     def test_correct_expressions(self):
         print()
-        print('*** Web service test ***')
+        print('*** Correct expressions test ***')
         print()
 
         all_values_correct = True
