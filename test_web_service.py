@@ -16,7 +16,7 @@ class TestWebService(TestCase):
 
     response_error_identifier = 'error'
 
-    response_value_identifier = 'value'
+    response_value_identifier = 'result'
 
     def test_missing_query_parameter(self):
         print()

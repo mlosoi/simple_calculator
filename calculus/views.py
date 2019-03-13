@@ -17,7 +17,7 @@ response_error_identifier = 'error'
 
 response_message_identifier = 'message'
 
-response_value_identifier = 'value'
+response_value_identifier = 'result'
 
 # Response JSON attribute names }
 
@@ -49,7 +49,7 @@ def calculus(request):
         # Calculate the given expression
         value = calculate_value(infix_expression)
 
-        # Note that you could just call eval() here but from security perspective it may not be the best (or even a good) idea. However, by normalizing the input and maybe testing it against an applicable regular expresion it may be possible to limit the input string so that it can be considered safe enough to be passed to eval() 
+        # Note that you could just call eval() here but from security perspective it may not be the best (or even a good) idea. However, by normalizing the input and maybe testing it against an applicable regular expresion it may be possible to limit the input string so that it can be considered safe enough to be passed to eval()
 
     except:
         return HttpResponse(json.dumps({response_error_identifier: True, response_message_identifier: 'Failed to calculate the expression {0}'.format(infix_expression)}), content_type = 'application/json')
