@@ -10,10 +10,12 @@ sys.path.append('..')
 from calculator import calculate_value
 
 def calculus(request):
-    # TODO: Catch errors!
+    try:
+        infix_expression = b64decode(request.GET['query']).decode('UTF-8')
 
-    infix_expression = b64decode(request.GET['query']).decode('UTF-8')
+        value = calculate_value(infix_expression)
 
-    value = calculate_value(infix_expression)
+        return HttpResponse(json.dumps({'error': False, 'value': value}), content_type = 'application/json')
 
-    return HttpResponse(json.dumps({'error': False, 'value': value}), content_type = 'application/json')
+    except:
+        return HttpResponse(json.dumps({'error': True, 'message': 'Failed'}), content_type = 'application/json')
