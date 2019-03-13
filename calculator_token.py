@@ -61,6 +61,8 @@ class Token:
     def __eq__(self, token):
         return self.type == token.type and self.datum == token.datum
 
+    # Note that there's no need to override the inequality operator (!= / __ne__) because in Python 3 the inequality operator returns the inverse of the equality operator (== / __eq__)
+
     def __add__(self, token):
         if self.is_number() and token.is_number():
             return self.number(self.datum + token.datum)
@@ -84,8 +86,6 @@ class Token:
             return self.number(self.datum / token.datum)
         else:
             return None
-
-    # Note that there's no need to override the inequality operator (!= / __ne__) because in Python 3 the inequality operator returns the inverse of the equality operator (== / __eq__)
 
     def is_number(self):
         return self.type == self.Type.NUMBER
@@ -135,7 +135,7 @@ class Token:
         if self.is_multiplication_operator() or self.is_division_operator():
             return 3
 
-# Reads an expression as a string and transforms it into a tokenized expression, i.e., a list list of Token instances
+# Reads an expression as a string and transforms it into a tokenized expression, i.e., a list of Token instances
 def tokenize_expression(expression):
     tokens = []
 

@@ -36,7 +36,7 @@ def calculate_value(infix_expression):
 
 # Normalizes an expression given as a string
 def normalize_input(expression):
-    # Filter out characters other than digits, +, -, *, / and parenthesis
+    # Filter out characters other than digits, +, -, *, / and parenthesis. Consider utilizing the constants of the Token.Identifier class
     return re.sub('[^0-9|\\+|\\-|\\*|\\/|\\(|\\)]', '', expression)
 
 # Validates an expression by performing the following checks:
@@ -49,7 +49,7 @@ def validate_input(expression):
 
         return False
 
-    # Validate that the number of opening parenthesis match with the number of closing parenthesis
+    # Validate that the number of opening parenthesis match with the number of closing parenthesis. Consider utilizing the constants of the Token.Identifier class
     if expression.count('(') != expression.count(')'):
         print('The number of opening parenthesis does not match with the number of closing parenthesis')
 
