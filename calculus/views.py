@@ -43,11 +43,13 @@ def calculus(request):
 
     value = None
 
-    # Consider whether it's possible to give so lengthy expression as input that the HTTP server timeouts the request. Supposedly, there's a max length for a URL as it's discussed here: https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers 
+    # Consider whether it's possible to give so lengthy expression as input that the HTTP server timeouts the request. Supposedly, there's a max length for a URL as it's discussed here: https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers
 
     try:
         # Calculate the given expression
         value = calculate_value(infix_expression)
+
+        # Note that you could just call eval() here but from security perspective it may not be the best (or even a good) idea. However, by normalizing the input and maybe testing it against an applicable regular expresion it may be possible to limit the input string so that it can be considered safe enough to be passed to eval() 
 
     except:
         return HttpResponse(json.dumps({response_error_identifier: True, response_message_identifier: 'Failed to calculate the expression {0}'.format(infix_expression)}), content_type = 'application/json')
