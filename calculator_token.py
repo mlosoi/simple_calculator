@@ -119,7 +119,7 @@ class Token:
 
     # Operator precedence level:
     #   0: number, i.e., not an operator at all
-    #   1: opening or closing parenthesis, i.e., grouping operator_stack
+    #   1: opening or closing parenthesis, i.e., grouping operator
     #   2: addition or subtraction
     #   3: multiplication or division
     def get_operator_precedence_level(self):
